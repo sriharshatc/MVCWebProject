@@ -14,6 +14,7 @@ public class LoginValidation extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter pw = response.getWriter();
 		pw.println(request.getParameter("username") + request.getParameter("password"));

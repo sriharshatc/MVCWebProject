@@ -1,0 +1,44 @@
+@CHARSET "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro');
+
+body {
+	font-family: 'Maven Pro', sans-serif;
+	background-image: url('assets/login_bg.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+#pageWrapper {
+	height: 100%;
+	width: 100%;
+	clear: both;
+}
+
+#pageWrapper div {
+	clear: both;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#pageHeading {
+	color: white;
+	width: 100%;
+	text-align: center;
+	text-shadow: 2px 2px black;
+}
+
+#detailsBox {
+	background-color: white;
+	width: 300px;
+	font-weight: bold;
+	border: 5px solid black;
+	padding: 15px;
+	margin: 15px;
+}
+
+#detailsBox input {
+	width: 100%;
+	clear: both;
+}

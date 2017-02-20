@@ -6,7 +6,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Login Page</title>
+<title>Registration</title>
 
 <link rel="stylesheet" type="text/css" href="./styles/details.css"/>
 </head>
@@ -14,18 +14,18 @@
 <body>
 	<div id="pageWrapper">
 		<div id="pageHeading">
-			<h1>MVC Online Shopping</h1>
-		</div>  <!-- End of pageHeading -->
+			<h1>Registration</h1>
+		</div>  <!-- End of pageHeading go-->
 		<div id="detailsBox">
 
-			<form action="./login-validation.do" method="post">
+			<form action="./registration.do" method="post">
+				First Name: <input type="text" name="fname" /> <br/> <br/>
+				Last Name: <input type="text" name="lname" /> <br/> <br/>
 				Username: <input type="text" name="username" /> <br/> <br/>
 				Password: <input type="password" name="password" /> <br/> <br/>
-				<input type="submit" value="LOGIN" />
-			</form> <br/> <br/>
-
-			<form action="./registration.do" method="get">
-				<input type="submit" value="REGISTER" />
+				Confirm Password: <input type="password" name="confirmpass" /> <br/> <br/>
+				<input type="submit" value="REGISTER" /> <br/> <br/>
+				<input type="reset" value="RESET" />
 			</form>
 
 		</div> <!-- End of detailsBox -->
