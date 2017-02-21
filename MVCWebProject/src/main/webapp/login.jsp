@@ -19,8 +19,8 @@
 		<div id="detailsBox">
 
 			<form action="./login-validation.do" method="post">
-				Username: <input type="text" name="username" /> <br/> <br/>
-				Password: <input type="password" name="password" /> <br/> <br/>
+				Username: <input type="text" name="PARAM_USERNAME" /> <br/> <br/>
+				Password: <input type="password" name="PARAM_PASSWORD" /> <br/> <br/>
 				<input type="submit" value="LOGIN" />
 			</form> <br/> <br/>
 

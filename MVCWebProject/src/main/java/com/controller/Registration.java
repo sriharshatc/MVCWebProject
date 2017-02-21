@@ -12,7 +12,7 @@ import com.data.Constants;
 import com.model.RegisterUser;
 
 @WebServlet("/registration.do")
-public class Registration extends HttpServlet {
+public class Registration extends HttpServlet implements Constants{
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,44 +23,46 @@ public class Registration extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String fname = req.getParameter("fname");
-		String lname = req.getParameter("lname");
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		String confirmpass = req.getParameter("confirmpass");
 
-		String msg = registerNewUser(new RegisterUser(fname, lname, username, password, confirmpass));
+		RegisterUser register = new RegisterUser(
+				req.getParameter(CON_FNAME),
+				req.getParameter(CON_LNAME),
+				req.getParameter(CON_UNAME),
+				req.getParameter(CON_PASS),
+				req.getParameter(CON_CNFM));
+
+		String msg = getStatus(register);
 		
 		if(msg == null) {
-			req.setAttribute(Constants.ALERT, "Registration Successful!");
+			req.setAttribute(ALERT, "Registration Successful!");
 			req.getRequestDispatcher("./login.jsp").forward(req, resp);
 		} else {
-			req.setAttribute(Constants.ALERT, msg);
+			req.setAttribute(ALERT, msg);
 			req.getRequestDispatcher("./register.jsp").forward(req, resp);
 		}
 	}
 	
-	private String registerNewUser(RegisterUser ru) {
-		switch (ru.checkUser()) {
-		case RegisterUser.SUCCESS:
+	private String getStatus(RegisterUser register) {
+		switch (register.addUser()) {
+		case SUCCESS:
 			return null;
-		case RegisterUser.EMPTY_FIELDS:
+		case EMPTY_FIELDS:
 			return "Input Fields are Empty";
-		case RegisterUser.INVALID_PASSWORD:
+		case PASS_MISMATCH:
 			return "Passwords Do Not Match!";
-		case RegisterUser.FNAME:
+		case ERR_FNAME:
 			return "First Name should not be more than 25 characters";
-		case RegisterUser.LNAME:
+		case ERR_LNAME:
 			return "Last Name should not be more than 25 characters";
-		case RegisterUser.USERNAME:
+		case ERR_UNAME:
 			return "Username should not be more than 20 characters";
-		case RegisterUser.PASSWORD:
+		case ERR_PASS:
 			return "Password should not be more than 20 characters";
-		case RegisterUser.SQL_FAILED:
+		case DB_FAILED:
 			return "Registration Failed. Try Again.";
-		case RegisterUser.SQL_UNAME:
+		case DB_UNAME:
 			return "Username already Exists!";
-		case RegisterUser.SQL_EX:
+		case DB_EXCP:
 			return "Database Error. Try Again.";
 		default:
 			return "Unknow Error. Try Again.";

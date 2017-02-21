@@ -6,11 +6,11 @@ import java.sql.Statement;
 
 import oracle.jdbc.pool.OracleDataSource;
 
-public final class DAO {
+public final class DBConn {
 
 	private static Connection conn;
 
-	private DAO() {}
+	private DBConn() {}
 		
 	public static final Connection getConnection() throws SQLException {
 		if(conn == null) {

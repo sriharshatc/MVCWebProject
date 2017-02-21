@@ -19,11 +19,11 @@
 		<div id="detailsBox">
 
 			<form action="./registration.do" method="post">
-				First Name: <input type="text" name="fname" /> <br/> <br/>
-				Last Name: <input type="text" name="lname" /> <br/> <br/>
-				Username: <input type="text" name="username" /> <br/> <br/>
-				Password: <input type="password" name="password" /> <br/> <br/>
-				Confirm Password: <input type="password" name="confirmpass" /> <br/> <br/>
+				First Name: <input type="text" name="PARAM_FIRSTNAME" /> <br/> <br/>
+				Last Name: <input type="text" name="PARAM_LASTNAME" /> <br/> <br/>
+				Username: <input type="text" name="PARAM_USERNAME" /> <br/> <br/>
+				Password: <input type="password" name="PARAM_PASSWORD" /> <br/> <br/>
+				Confirm Password: <input type="password" name="PARAM_CONFIRM" /> <br/> <br/>
 				<input type="submit" value="REGISTER" /> <br/> <br/>
 				<input type="reset" value="RESET" />
 			</form>
