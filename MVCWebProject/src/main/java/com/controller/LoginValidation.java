@@ -30,7 +30,7 @@ public class LoginValidation extends HttpServlet implements Constants {
 		String msg = getStatus(user.getStatus());
 
 		if(msg == null) {
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(true);
 			session.setAttribute(CON_USER, user);
 			response.sendRedirect("./products.do");
 		} else {

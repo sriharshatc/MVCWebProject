@@ -7,10 +7,17 @@ public interface Constants {
 	String CON_FNAME = "PARAM_FIRSTNAME";
 	String CON_LNAME = "PARAM_LASTNAME";
 	String CON_UNAME = "PARAM_USERNAME";
-	String CON_USER = "PARAM_USER_INFO";
 
 	String CON_PASS = "PARAM_PASSWORD";
 	String CON_CNFM = "PARAM_CONFIRM";
+
+	String CON_USER = "PARAM_USER";
+	String CON_PLIST = "PARAM_INVENTORY";
+	String CON_SCART = "PARAM_SCART";
+
+	String CON_QTY = "PARAM_QUANTITY";
+	String CON_PID = "PARAM_PRODUCTID";
+	String CON_COUT = "PARAM_CHECKOUT";
 
 	int SUCCESS = 0;
 

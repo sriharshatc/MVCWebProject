@@ -37,4 +37,17 @@ public final class UserInfo implements Serializable {
 	public final String getUname() {
 		return uname;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj != null && obj instanceof UserInfo) {
+			return this.uname.equals(((UserInfo) obj).uname);
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return uname.hashCode();
+	}
 }

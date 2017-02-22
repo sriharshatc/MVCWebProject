@@ -27,42 +27,48 @@
 			</div>
 		</div>  <!-- End of pageHeading -->
 		<div class="pageHeading" style="text-align:center;">
-			<h2 class="userInfo">MVC Online Shopping</h2>
+			<h2 class="userInfo">Shopping Cart</h2>
 		</div>  <!-- End of pageHeading -->
 		<div class="divTable">
 			<div class="divTableBody">
 				<div class="divTableRow" style="background-color:#FF9933;font-weight:bold;">
 					<div class="divTableCell">ID</div>
 					<div class="divTableCell">PRODUCT</div>
-					<div class="divTableCell">PRICE</div>
-					<div class="divTableCell">ADD TO CART</div>
+					<div class="divTableCell">QTY</div>
+					<div class="divTableCell">TOTAL</div>
+					<div class="divTableCell">REMOVE</div>
 				</div>
-				<c:forEach items="${PARAM_INVENTORY}" var="product">
+
+				<c:set var="total" value="0" scope="page" />
+				<c:forEach items="${PARAM_SCART}" var="item">
+
+					<c:set var="total" value="${total + item.getTotal()}" scope="page" />
 					<div class="divTableRow">
-						<div class="divTableCell">${product.getPid()}</div>
-						<div class="divTableCell">${product.getPname()}</div>
-						<div class="divTableCell"><c:out value="$"/>${product.getPrice()}</div>
+						<div class="divTableCell">${item.getPid()}</div>
+						<div class="divTableCell">${item.getPname()}</div>
+						<div class="divTableCell">${item.getQty()}</div>
+						<div class="divTableCell"><c:out value="$"/>${item.getTotal()}</div>
 						<div class="divTableCell">
 							<form action="./products.do" method="post">
-								Qty: <select name="PARAM_QUANTITY">
-										<option value="1" selected="selected">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-								</select>
-								<input type="hidden" name="PARAM_PRODUCTID" value="${product.getPid()}"/>
-								<input type="submit" value="ADD" size="3"/>
+								<input type="hidden" name="PARAM_PRODUCTID" value="${item.getPid()}"/>
+								<input type="hidden" name="PARAM_QUANTITY" value="0"/>
+								<input type="submit" value="REMOVE" size="5"/>
 							</form>
 						</div>
 					</div> <!-- End of divTableRow -->
+
 				</c:forEach>
 			</div> <!-- End of divTableBody -->
 		</div> <!-- End of divTable -->
 		<br/><br/><br/>
 		<div class="pageHeading">
-			<form action="./scart.do" method="post" style="width:100%;height:100%;text-align:center;">
-				<input type="submit" value="SUBMIT" style="font-weight:bold;font-size:large;"/>
+			<form action="./checkout.do" method="post" style="width:100%;text-align:center;">
+				<h2 class="userInfo">TOTAL is <c:out value="$"/><c:out value="${total}"/></h2>
+				<input type="submit" value="CHECKOUT" style="font-weight:bold;font-size:large;"/>
+			</form>
+			<br/>
+			<form action="./products.do" method="get" style="width:100%;text-align:center;">
+				<input type="submit" value="GO BACK" style="font-weight:bold;font-size:large;"/>
 			</form>
 		</div>  <!-- End of pageHeading -->
 	</div> <!-- End of pageWrapper -->
