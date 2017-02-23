@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
@@ -11,7 +12,11 @@
 <link rel="stylesheet" type="text/css" href="./styles/products.css"/>
 
 	<c:if test="${ empty PARAM_USER }">
-		response.sendRedirect("./logout.do");
+		<c:redirect url="./logout.do" />
+	</c:if>
+
+	<c:if test="${ PARAM_USER.isAdmin() }">
+		<c:redirect url="./products.do" />
 	</c:if>
 
 </head>
@@ -27,7 +32,7 @@
 			</div>
 		</div>  <!-- End of pageHeading -->
 		<div class="pageHeading" style="text-align:center;">
-			<h2 class="userInfo">MVC Online Shopping</h2>
+			<h1 class="userInfo">Buy Products</h1>
 		</div>  <!-- End of pageHeading -->
 		<div class="divTable">
 			<div class="divTableBody">

@@ -7,11 +7,11 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Registration</title>
+<title>Add Products</title>
 
 <link rel="stylesheet" type="text/css" href="./styles/details.css"/>
 
-	<c:if test="${ not empty PARAM_USER }">
+	<c:if test="${ empty PARAM_USER or not PARAM_USER.isAdmin() }">
 		<c:redirect url="./logout.do" />
 	</c:if>
 
@@ -19,21 +19,29 @@
 
 <body>
 	<div id="pageWrapper">
+		<div style="clear:both;margin:auto;">
+			<h3 class="userInfo">Welcome, <c:out value="${PARAM_USER.getFname()} ${PARAM_USER.getLname()}"/></h3>
+			<div class="userInfo">
+				<form action="./logout.do" method="get">
+					<input type="submit" value="LOGOUT" />
+				</form>
+			</div>
+		</div>  <!-- End of userDiv -->
 		<div id="pageHeading">
-			<h1>Registration</h1>
+			<h1>Add a Product</h1>
 		</div>  <!-- End of pageHeading go-->
 		<div id="detailsBox">
 
-			<form action="./registration.do" method="post">
-				First Name: <input type="text" name="PARAM_FIRSTNAME" /> <br/> <br/>
-				Last Name: <input type="text" name="PARAM_LASTNAME" /> <br/> <br/>
-				Username: <input type="text" name="PARAM_USERNAME" /> <br/> <br/>
-				Password: <input type="password" name="PARAM_PASSWORD" /> <br/> <br/>
-				Confirm Password: <input type="password" name="PARAM_CONFIRM" /> <br/> <br/>
-				<input type="submit" value="REGISTER" /> <br/> <br/>
-				<input type="reset" value="RESET" />
+			<form action="./add-product.do" method="post">
+				Product ID: <input type="text" name="PARAM_PRODUCTID" /> <br/> <br/>
+				Product Name: <input type="text" name="PARAM_PRODNAME" /> <br/> <br/>
+				Price: <input type="text" name="PARAM_PRODPRICE" /> <br/> <br/>
+				<input type="submit" value="ADD" />
 			</form>
-
+			<br /><br />
+			<form action="./admin.do" method="get">
+				<input type="submit" value="GO BACK" />
+			</form>
 		</div> <!-- End of detailsBox -->
 	</div> <!-- End of pageWrapper -->
 	<c:if test="${ not empty POPUP_ALERT_MSG }">

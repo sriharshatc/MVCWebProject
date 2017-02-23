@@ -20,8 +20,12 @@ public class Inventory {
 		return plist;
 	}
 	
-	public static void updateInventory() {
+	public static void clearInventory() {
 		plist.clear();
+	}
+	
+	public static void updateInventory() {
+		clearInventory();
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {

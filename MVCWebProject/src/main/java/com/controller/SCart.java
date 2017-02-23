@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.data.Constants;
+import com.model.ShopCart;
+
 @WebServlet("/scart.do")
-public class SCart extends HttpServlet {
+public class SCart extends HttpServlet implements Constants {
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,6 +22,11 @@ public class SCart extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("./cart.jsp").forward(req, resp);
+		if(ShopCart.getCart().isEmpty()) {
+			req.setAttribute(ALERT, "Your Cart is Empty!");
+			req.getRequestDispatcher("./products.jsp").forward(req, resp);
+		} else {
+			req.getRequestDispatcher("./cart.jsp").forward(req, resp);
+		}
 	}
 }

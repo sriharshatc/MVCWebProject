@@ -44,13 +44,13 @@ public class LoginValidation extends HttpServlet implements Constants {
 		case SUCCESS:
 			return null;
 		case EMPTY_FIELDS:
-			return "Login Fields are Empty";
+			return "Login Fields are Empty!";
 		case DB_FAILED:
-			return "Login Failed. Invalid Username/Password.";
+			return "Login Failed! Invalid Username/Password.";
 		case DB_EXCP:
-			return "Database Error. Try Again.";
+			return "Database Error! Try Again.";
 		default:
-			return "Unknow Error. Try Again.";
+			return "Unknow Error! Try Again.";
 		}
 	}
 }

@@ -24,6 +24,7 @@ public final class DBConn {
 			conn = ods.getConnection();
 			createUsers();
 			createProducts();
+			createTxns();
 		}
 		return conn;
 	}
@@ -63,13 +64,32 @@ public final class DBConn {
 			stmt = conn.createStatement();
 			stmt.execute("CREATE TABLE mvc_db_products ("
 					+ "pid NUMBER(5),"
-					+ "pname VARCHAR2(50) NOT NULL,"
+					+ "pname VARCHAR2(25) NOT NULL,"
 					+ "price NUMBER(5) NOT NULL,"
 					+ "CONSTRAINT mvc_db_products_pk PRIMARY KEY(pid))");
 			
-			stmt.execute("INSERT INTO mvc_db_products VALUES(100, 'Snickers', 50)");
-			stmt.execute("INSERT INTO mvc_db_products VALUES(101, 'Kit Kat', 35)");
-			stmt.execute("INSERT INTO mvc_db_products VALUES(102, 'Hersheys', 65)");
+			stmt.execute("INSERT INTO mvc_db_products VALUES(101, 'Snickers', 50)");
+			stmt.execute("INSERT INTO mvc_db_products VALUES(102, 'Kit Kat', 35)");
+			stmt.execute("INSERT INTO mvc_db_products VALUES(103, 'Hersheys', 65)");
+			stmt.execute("INSERT INTO mvc_db_products VALUES(104, 'Twix', 45)");
+			stmt.execute("INSERT INTO mvc_db_products VALUES(105, 'Cadbury', 80)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { if (stmt != null) stmt.close(); } catch (SQLException e) {}
+		}
+	}
+
+	private static final void createTxns() {
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			stmt.execute("CREATE TABLE mvc_db_txns ("
+					+ "fullname VARCHAR2(50) NOT NULL,"
+					+ "pname VARCHAR2(25) NOT NULL,"
+					+ "qty NUMBER(1) NOT NULL,"
+					+ "total NUMBER(6) NOT NULL,"
+					+ "stamp TIMESTAMP(0) NOT NULL)");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

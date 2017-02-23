@@ -47,7 +47,7 @@ public class Registration extends HttpServlet implements Constants{
 		case SUCCESS:
 			return null;
 		case EMPTY_FIELDS:
-			return "Input Fields are Empty";
+			return "Input Fields are Empty!";
 		case PASS_MISMATCH:
 			return "Passwords Do Not Match!";
 		case ERR_FNAME:
@@ -58,14 +58,14 @@ public class Registration extends HttpServlet implements Constants{
 			return "Username should not be more than 20 characters";
 		case ERR_PASS:
 			return "Password should not be more than 20 characters";
-		case DB_FAILED:
-			return "Registration Failed. Try Again.";
-		case DB_UNAME:
+		case DB_EXISTS:
 			return "Username already Exists!";
+		case DB_FAILED:
+			return "Registration Failed! Try Again.";
 		case DB_EXCP:
-			return "Database Error. Try Again.";
+			return "Database Error! Try Again.";
 		default:
-			return "Unknow Error. Try Again.";
+			return "Unknow Error! Try Again.";
 		}
 	}
 }

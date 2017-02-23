@@ -76,12 +76,12 @@ public class RegisterUser implements Constants {
 		ResultSet rs = null;
 		try {
 			Connection conn = DBConn.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM mvc_db_users WHERE username = ?");
+			ps = conn.prepareStatement("SELECT username FROM mvc_db_users WHERE username = ?");
 			ps.setString(1, uname);
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				return DB_UNAME;
+				return DB_EXISTS;
 			} else {
 				return SUCCESS;
 			}

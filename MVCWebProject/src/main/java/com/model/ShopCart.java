@@ -6,12 +6,12 @@ import java.util.Set;
 import com.data.CartItem;
 import com.data.ProductInfo;
 
-public class BuildCart {
+public class ShopCart {
 
 	private static final Set<CartItem> scart = new HashSet<>();
 	private static final Set<ProductInfo> plist = Inventory.getInventory();
 
-	private BuildCart() {}
+	private ShopCart() {}
 	
 	public static Set<CartItem> getCart() {
 		return scart;

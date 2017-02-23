@@ -42,3 +42,8 @@ body {
 	width: 100%;
 	clear: both;
 }
+
+.userInfo {
+	color: white;
+	text-shadow: 2px 2px black;
+}
